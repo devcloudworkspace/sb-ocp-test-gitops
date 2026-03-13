@@ -38,7 +38,7 @@ jobs:
 
     # Update both values files (production and non-production resources)
     - name: Update images.yaml
-      run: 'yq -i e ".image = \"${{ github.event.inputs.image }}\"" manifests/overlays/dev/images.yaml'
+      run: 'yq -i e ".spec.template.spec.containers.image = \"${{ github.event.inputs.image }}\"" manifests/overlays/dev/images.yaml'
 
     # Create a PR with the new values files. This requires actions to
     # be allowed to open a PR in the repository:
