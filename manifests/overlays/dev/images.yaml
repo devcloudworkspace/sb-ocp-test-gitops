@@ -8,4 +8,3 @@ spec:
       containers:
         - name: sbocp-container
           image: quay.io/devcloud1user2/myrepo/sb-ocp-test:1.0.1
-image: quay.io/devcloud1user2/myrepo/sb-ocp-test:sha-4404323
