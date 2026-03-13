@@ -44,9 +44,10 @@ jobs:
     # be allowed to open a PR in the repository:
     # https://github.com/marketplace/actions/create-pull-request#workflow-permissions
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
+      uses: peter-evans/create-pull-request@v8
       id: cpr
       with:
+#        token: ${{ secrets.PAT }}
         title: ${{github.event.inputs.message}}
         branch: update-image-${{github.event.inputs.sha}}
         commit-message: update backend image tag to ${{github.event.inputs.image}}
