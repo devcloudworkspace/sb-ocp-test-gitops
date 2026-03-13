@@ -49,7 +49,7 @@ jobs:
       with:
 #        token: ${{ secrets.PAT }}
         title: ${{github.event.inputs.message}}
-        branch: update-image-${{github.event.inputs.sha}}
+        branch: ${{github.event.inputs.sha}}
         commit-message: update backend image tag to ${{github.event.inputs.image}}
 
     - name: Check outputs
