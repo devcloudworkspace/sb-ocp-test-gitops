@@ -1,0 +1,22 @@
+resources:
+- ../../base
+- route.yaml
+
+namespace: devcloud1user2-dev
+
+patches:
+  - path: replicas.yaml
+  - path: images.yaml
+
+configMapGenerator:
+- name: myconfigmap
+  files:
+    - application.properties
+
+secretGenerator:
+- name: mysecretmap
+  literals:
+  - sec.sec1=test1-Dev
+  - sec.sec2=test2-Dev
+
+  

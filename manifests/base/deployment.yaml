@@ -1,0 +1,28 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: sbocp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: sbocp
+    spec:
+      containers:
+        - name: sbocp-container
+          # image: image-registry.openshift-image-registry.svc:5000/devcloud1user2-dev/sbocp:1.0.0
+          image: quay.io/devcloud1user2/myrepo/sb-ocp-test
+          ports:
+            - containerPort: 8081
+          envFrom:
+            - secretRef:
+                name: mysecretmap
+          volumeMounts:
+            - mountPath: /app/config/application.properties
+              name: myconfigmap
+      volumes:
+        - name: myconfigmap
+          configMap:
+            name: myconfigmap
+          
+

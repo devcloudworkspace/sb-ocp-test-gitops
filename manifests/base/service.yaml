@@ -1,0 +1,8 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: sbocp
+spec:
+  ports:
+    - port: 8081
+      targetPort: 8081
