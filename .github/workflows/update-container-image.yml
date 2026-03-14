@@ -38,7 +38,7 @@ jobs:
 
     # Update both values files (production and non-production resources)
     - name: Update images.yaml
-      run: 'yq -i e ".spec.template.spec.containers.image = \"${{ github.event.inputs.image }}\"" manifests/overlays/dev/images.yaml'
+      run: 'yq -i ".spec.template.spec.containers[0].image = \"${{ github.event.inputs.image }}\"" manifests/overlays/dev/images.yaml'
 
     # Create a PR with the new values files. This requires actions to
     # be allowed to open a PR in the repository:
@@ -56,4 +56,4 @@ jobs:
       if: ${{ steps.cpr.outputs.pull-request-number }}
       run: |
         echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-        echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+        echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}" 
